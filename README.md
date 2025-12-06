@@ -1,4 +1,4 @@
-# 🤖 Assistant RH Multi-Agents — Microsoft Agent Framework
+# 🤖 Assistant de gouvernance — Microsoft Agent Framework
 
 Application multi-agents pour l'analyse des politiques de télétravail, construite avec **Microsoft Agent Framework** et déployée sur **Azure AI Foundry**.
 
@@ -18,7 +18,7 @@ Application multi-agents pour l'analyse des politiques de télétravail, constru
 
 ## 🎯 Présentation
 
-Cette application démontre l'utilisation de **Microsoft Agent Framework** pour orchestrer plusieurs agents IA spécialisés dans l'analyse des politiques RH. Chaque agent possède un rôle distinct et accède à des sources de données spécifiques via des connecteurs MCP (Model Context Protocol).
+Cette application démontre l'utilisation de **Microsoft Agent Framework** pour orchestrer plusieurs agents IA spécialisés dans l'analyse des politiques de gouvernance. Chaque agent possède un rôle distinct et accède à des sources de données spécifiques via des connecteurs MCP (Model Context Protocol).
 
 ### Agents déployés
 
@@ -161,7 +161,7 @@ az login
 1. Accédez à [Azure AI Foundry Studio](https://ai.azure.com)
 2. Cliquez sur **Create project**
 3. Sélectionnez ou créez un **Hub** Azure AI
-4. Nommez votre projet (ex: `assistant-rh-agents`)
+4. Nommez votre projet (ex: `assistant-agents`)
 5. Cliquez sur **Create**
 
 ### Étape 2 : Récupérer le Project Endpoint
@@ -222,13 +222,13 @@ Cet agent analyse les documents internes via Azure AI Search.
 
 | Paramètre | Valeur |
 |-----------|--------|
-| **Name** | Agent Document RH |
-| **Model** | gpt-4o-mini |
+| **Name** | Agent Document |
+| **Model** | gpt-5 |
 | **Instructions** | Voir ci-dessous |
 
 **Instructions de l'agent :**
 ```
-Tu es un expert en analyse documentaire RH. Tu analyses les politiques internes, 
+Tu es un expert en analyse documentaire. Tu analyses les politiques internes, 
 les guides et les procédures de l'entreprise concernant le télétravail.
 
 Tes responsabilités :
@@ -252,13 +252,13 @@ Cet agent recherche les tendances et bonnes pratiques via Bing.
 
 | Paramètre | Valeur |
 |-----------|--------|
-| **Name** | Agent Web RH |
-| **Model** | gpt-4o-mini |
+| **Name** | Agent Web |
+| **Model** | gpt-5|
 | **Instructions** | Voir ci-dessous |
 
 **Instructions de l'agent :**
 ```
-Tu es un expert en veille RH et tendances du marché du travail. Tu recherches 
+Tu es un expert en veille et tendances du marché du travail. Tu recherches 
 les meilleures pratiques de télétravail et les évolutions réglementaires.
 
 Tes responsabilités :
@@ -279,13 +279,13 @@ Cet agent consolide les informations et génère des recommandations.
 
 | Paramètre | Valeur |
 |-----------|--------|
-| **Name** | Agent Synthèse RH |
+| **Name** | Agent Synthèse |
 | **Model** | gpt-4o-mini |
 | **Instructions** | Voir ci-dessous |
 
 **Instructions de l'agent :**
 ```
-Tu es un conseiller stratégique RH senior. Tu synthétises les analyses documentaires 
+Tu es un conseiller stratégique senior. Tu synthétises les analyses documentaires 
 et les recherches web pour formuler des recommandations actionables.
 
 Tes responsabilités :
@@ -359,7 +359,7 @@ Ce connecteur permet à l'agent d'interroger un index vectoriel contenant vos do
 
 | Paramètre | Valeur |
 |-----------|--------|
-| **Index name** | politiques-rh-index |
+| **Index name** | politiques-index |
 | **Data source** | Azure Blob Storage |
 | **Embedding model** | text-embedding-ada-002 |
 
@@ -367,7 +367,7 @@ Ce connecteur permet à l'agent d'interroger un index vectoriel contenant vos do
    - Politique de télétravail
    - Guide de l'employé
    - Conventions collectives
-   - Procédures RH
+   - Procédures 
 
 5. Lancez l'indexation et attendez la complétion
 
@@ -380,7 +380,7 @@ Ce connecteur permet à l'agent d'interroger un index vectoriel contenant vos do
 | Paramètre | Valeur |
 |-----------|--------|
 | **Connection** | Votre connexion AI Search |
-| **Index** | politiques-rh-index |
+| **Index** | politiques-index |
 | **Search type** | Hybrid (vector + keyword) |
 | **Top K** | 5 |
 
@@ -520,7 +520,7 @@ cat .env
 ### Lancer l'application
 
 ```bash
-streamlit run AssistantRH.py
+streamlit run Assistant.py
 ```
 
 L'application sera accessible à l'adresse `http://localhost:8501`.
@@ -539,7 +539,7 @@ L'application sera accessible à l'adresse `http://localhost:8501`.
 
 ```
 MSAgentFramework/
-├── AssistantRH.py          # Application principale
+├── Assistant.py          # Application principale
 ├── requirements.txt        # Dépendances Python
 ├── .env                    # Configuration (non versionné)
 ├── .env.example            # Template de configuration
