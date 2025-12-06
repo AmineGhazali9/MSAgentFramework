@@ -1,0 +1,12 @@
+# Microsoft Agent Framework
+agent-framework
+
+# Azure Identity avec support asynchrone
+azure-identity
+aiohttp
+
+# Streamlit pour l'interface web
+streamlit
+
+# Gestion des variables d'environnement
+python-dotenv
