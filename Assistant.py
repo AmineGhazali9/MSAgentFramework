@@ -1,5 +1,5 @@
 """
-Assistant RH – Politique de télétravail
+Assistant – Cadre de gouvernance
 Migré de Semantic Kernel vers Microsoft Agent Framework
 """
 import asyncio
@@ -33,8 +33,8 @@ agent_icons = {
     "summary": "🧠"
 }
 
-st.set_page_config(page_title="Assistant RH - Télétravail", layout="wide")
-st.title("🤖 Assistant RH — Politique de télétravail")
+st.set_page_config(page_title="Assistant ", layout="wide")
+st.title("🤖 Assistant — cadre de gouvernance ")
 
 # Sidebar
 with st.sidebar:
@@ -103,7 +103,7 @@ async def run_agents(doc_query: str, web_query: str) -> None:
             with st.spinner(f"{agent_icons['summary']} Agent Résumé en cours..."):
                 response_summary_text = await run_single_agent(credential, AGENT3_ID, combined_input)
             
-            with st.expander(f"{agent_icons['summary']} Synthèse et recommandations RH", expanded=True):
+            with st.expander(f"{agent_icons['summary']} Synthèse et recommandations", expanded=True):
                 st.chat_message("assistant").markdown(response_summary_text)
 
             st.success("✅ Tous les agents ont terminé leur exécution.")
